@@ -8,6 +8,10 @@ const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const {Blockchain} =  require('./models/blockchain')
+
+const testCoin = new Blockchain()
+global.testCoin = testCoin
 
 // error handler
 onerror(app)

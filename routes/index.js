@@ -1,6 +1,5 @@
-import {Blockchain} from '../blockchain'
 const router = require('koa-router')()
-const testCoin = new Blockchain()
+const controllers = require('../controllers')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -18,19 +17,11 @@ router.get('/json', async (ctx, next) => {
   }
 })
 
-router.get('/mine', async (ctx, next) => {
-  ctx.body = `We'll mine a new block.`
-})
-
-router.post('/transactions/new', async (ctx, next) => {
-  ctx.body = `We'll add a new transaction.`
-})
-
-router.get('/chain', async (ctx, next) => {
-  ctx.body = {
-    chain: testCoin.chain,
-    length: testCoin.chain.length
-  }
-})
+//将目前的交易打包到新的区块
+router.get('/mine', controllers.mine)
+//添加新的交易
+router.post('/transactions/new', controllers.addNewTransactions)
+//获取当前区块链
+router.get('/chain', controllers.getChain)
 
 module.exports = router

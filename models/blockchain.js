@@ -1,4 +1,5 @@
 const SHA256 = require('crypto-js/sha256')
+// import SHA256 from 'crypto-js/sha256.js'
 
 class Block {
     //构造函数
@@ -80,18 +81,18 @@ class Blockchain {
     }
 }
 
-//测试Block
-const testCoin = new Blockchain()
+// //测试Block
+// const testCoin = new Blockchain()
+// // console.log(JSON.stringify(testCoin.chain, undefined, 2))
+
+// //测试BlockChain
+// const block1 = new Block('1', '18/11/2020')
+// block1.transactions.push('chameleon', 'shayne', 204)
+// testCoin.addBlock(block1)
+
+// const block2 = new Block('2', '19/11/2020')
+// block2.transactions.push('shayne', 'shuai', 403)
+// testCoin.addBlock(block2)
 // console.log(JSON.stringify(testCoin.chain, undefined, 2))
-
-//测试BlockChain
-block1 = new Block('1', '18/11/2020')
-block1.transactions.push('chameleon', 'shayne', 204)
-testCoin.addBlock(block1)
-
-block2 = new Block('2', '19/11/2020')
-block2.transactions.push('shayne', 'shuai', 403)
-testCoin.addBlock(block2)
-console.log(JSON.stringify(testCoin.chain, undefined, 2))
 
 module.exports = {Block, Blockchain}
