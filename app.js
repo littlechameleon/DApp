@@ -5,13 +5,17 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const fs = require('fs')
+const uuid = require('uuid')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
 const {Blockchain} =  require('./models/blockchain')
 
+const nodeIdentifier = uuid.v4()
 const testCoin = new Blockchain()
 global.testCoin = testCoin
+global.nodeIdentifier = nodeIdentifier
 
 // error handler
 onerror(app)
@@ -34,6 +38,9 @@ app.use(async (ctx, next) => {
   await next()
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  fs.appendFile('server.log', `${new Date().toString()}: ${ctx.method} ${ctx.url}\n`, err => {
+    if(err) console.log(err)
+  })
 })
 
 // routes

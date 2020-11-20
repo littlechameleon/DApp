@@ -12,5 +12,4 @@ module.exports = async ctx => {
     testCoin.addBlock(newBlock)
     testCoin.currentTransactions = []
     ctx.body = `Mined new block ${JSON.stringify(newBlock, undefined, 2)}`
-    // ctx.body = 'mine'
 }
