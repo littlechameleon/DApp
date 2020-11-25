@@ -1,4 +1,4 @@
-# <center>DApp</center>
+# DApp
 
 <p align="center">
         <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/littlechameleon/DApp?style=flat-square">
